@@ -1,0 +1,12 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "v5.2.8",
+        "mustache/mustache": "2.7.0",
+        "slim/slim": "2.*",
+        "slim/extras": "2.0.3",
+        "mandrill/mandrill": "1.0.54"
+    },
+    "autoload": {
+        "files": ["rb/rb.php"]
+    }
+}
