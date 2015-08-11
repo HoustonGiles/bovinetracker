@@ -7,6 +7,8 @@
         "mandrill/mandrill": "1.0.54"
     },
     "autoload": {
-        "files": ["rb/rb.php"]
+        "psr-4": {
+            "Bovinetracker\\": "src/"
+        }
     }
 }

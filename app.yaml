@@ -10,8 +10,5 @@ handlers:
 - url: /js
   static_dir: js
 
-- url: /cows
-  script: db.php
-
 - url: /.*
-  script: index.php
+  script: public/index.php

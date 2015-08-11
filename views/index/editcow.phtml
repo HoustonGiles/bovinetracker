@@ -1,0 +1,19 @@
+<?php
+    $cow = $this->cow;
+?>
+
+<h2>Edit Cow</h2>
+<form action="/cow/edit" method="POST">
+    <label>
+        Tag: <input type="text" name="tag" value="<?=$cow['tag'];?>">
+    </label>
+    <br>
+    <label>
+        Description:
+        <br>
+        <textarea name="description" cols="100" rows="10"><?=$cow['description'];?></textarea>
+    </label>
+    <br>
+    <input type="hidden" name="id" value="<?=$cow['id'];?>">
+    <input type="submit" value="Update Cow" class="btn btn-success">
+</form>
