@@ -7,14 +7,8 @@ class Cows extends \Bovinetracker\Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->data = new \Bovinetracker\CowData();
+        $this->data = new \Bovinetracker\Model\Cows();
     }
-
-    // protected function render($template, $data = array()) {
-    //     $config = \Bovinetracker\Config::get('site');
-
-    //     $this->template->render($this->config['view_path'] . "/" . $template, $data);
-    // }
 
     public function listAction() {
 
@@ -28,7 +22,7 @@ class Cows extends \Bovinetracker\Controller {
 
         if (isset($_POST) && sizeof($_POST) > 0) {
             $this->data->addCow($_POST);
-            header("Location: /cow/list");
+            header("Location: /");
             exit;
         }
 
@@ -39,7 +33,7 @@ class Cows extends \Bovinetracker\Controller {
 
         if (isset($_POST['id']) && !empty($_POST['id'])) {
             if ($this->data->updateCow($_POST)) {
-                header("Location: /cow/list");
+                header("Location: /");
                 exit;
             } else {
                 echo "An update error occurred.";
@@ -78,7 +72,7 @@ class Cows extends \Bovinetracker\Controller {
         }
 
         if ($this->data->deleteCow($options['id'])) {
-            header("Location: /cow/list");
+            header("Location: /");
             exit;
         } else {
             echo "A delete error occurred.";

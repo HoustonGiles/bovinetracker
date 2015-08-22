@@ -2,28 +2,10 @@
 namespace Bovinetracker;
 
 class CowData {
-    protected $connection;
-
-    public function __construct() {
-
-        $this->connect();
-    }
-
-    public function connect() {
-
-        // $dsn = 'mysql:unix_socket=/cloudsql/bovinetracker:bovinetracker;dbname=bovinetracker';
-        // $user = 'root';
-        // $password = '';
-        // $this->connection = new \PDO($dsn, $user, $password);
-
-        $config = \Bovinetracker\Config::get('database');
-
-        $this->connection = new \PDO("mysql:host=" .$config['hostname']. ";dbname=" .$config['dbname'], $config['username'], $config['password']);
-    }
 
     public function getActiveCows($active) {
 
-        $query = $this->connection->prepare("SELECT * FROM cows WHERE active = :active ORDER BY active DESC, type, newtag, tag");
+        $query = \Bovinetracker\Db::getInstance()->prepare("SELECT * FROM cows WHERE active = :active ORDER BY active DESC, type, newtag, tag");
 
         $data = [':active' => $active];
         $query->execute($data);
@@ -43,7 +25,7 @@ class CowData {
 
         } else {
 
-            $query = $this->connection->prepare("SELECT * FROM cows ORDER BY active DESC, type, newtag, tag;");
+            $query = \Bovinetracker\Db::getInstance()->prepare("SELECT * FROM cows ORDER BY active DESC, type, newtag, tag;");
             $query->execute();
 
             return $query;
@@ -51,7 +33,7 @@ class CowData {
     }
 
     public function addCow($data) {
-        $query = $this->connection->prepare(
+        $query = \Bovinetracker\Db::getInstance()->prepare(
             "INSERT INTO cows (
                 tag,
                 description
@@ -71,7 +53,7 @@ class CowData {
 
     public function getCow($id) {
         $sql = "SELECT * FROM cows WHERE id = :id LIMIT 1";
-        $query = $this->connection->prepare($sql);
+        $query = \Bovinetracker\Db::getInstance()->prepare($sql);
 
         $data = [':id' => $id];
         $query->execute($data);
@@ -80,7 +62,7 @@ class CowData {
     }
 
     public function updateCow($data) {
-        $query = $this->connection->prepare(
+        $query = \Bovinetracker\Db::getInstance()->prepare(
             "UPDATE cows 
                 SET 
                     tag = :tag, 
@@ -99,7 +81,7 @@ class CowData {
     }
 
     public function deleteCow($id) {
-        $query = $this->connection->prepare(
+        $query = \Bovinetracker\Db::getInstance()->prepare(
             "DELETE FROM cows
                 WHERE
                     id = :id"

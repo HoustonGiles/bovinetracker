@@ -12,7 +12,7 @@ class Router {
             if (isset($this->config['default'])) {
                 $route = $this->config['default'];
             } else {
-                $this->error();
+                $this->error($e->getMessage());
             }
         }
 
@@ -44,23 +44,23 @@ class Router {
                             $callable($options);
                             return;
                         } else {
-                            $this->error();
+                            $this->error('Page not found.');
                         }
                     } else {
-                        $this->error();
+                        $this->error('Page not found.');
                     }
                 }
             }
         } catch (\Bovinetracker\Controller\Exception $e) {
-            $this->error();
+            $this->error($e->getMessage());
         }
 
     }
 
-    public function error() {
+    public function error($message = '') {
         if (isset($this->config['errors'])) {
             $route = $this->config['errors'];
-            $this->start($route);
+            $this->start($route.'/'.$message);
         } else {
             echo "An unknown error occurred, please try again!";
         }

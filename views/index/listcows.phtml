@@ -45,8 +45,8 @@
                                 <td><?php echo $cow['description']; ?></td>
                                 <td><?php echo $cow['weight']; ?></td>
                                 <td><?php echo $cow['tagdam']; ?></td>
-                                <td><a href='/cow/edit/<?php echo $cow['id']; ?>' class="btn btn-primary">Edit</a></td>
-                                <td><a href='/cow/delete/<?php echo $cow['id']; ?>' class="btn btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-title="Are you sure?" data-content=" This cannot be undone!">Delete</a></td>
+                                <td><a href='/cow/edit/<?=$cow['id']; ?>' class="btn btn-primary">Edit</a></td>
+                                <td><a href='/cow/delete/<?=$cow['id']; ?>' class="btn btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-title="Are you sure?" data-content=" This cannot be undone!">Delete</a></td>
                             </tr>
                         <?php } ?>
                     </tbody>
