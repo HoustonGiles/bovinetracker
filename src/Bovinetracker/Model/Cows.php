@@ -15,11 +15,11 @@ class Cows {
 
     public function getAllCows() {
 
-        if (isset($_POST['active']) && !empty($_POST['active'])) {
+        if (isset($_REQUEST['active']) && !empty($_REQUEST['active'])) {
 
             return $this->getActiveCows("Yes");
 
-        } elseif (isset($_POST['notactive']) && !empty($_POST['notactive'])) {
+        } elseif (isset($_REQUEST['notactive']) && !empty($_REQUEST['notactive'])) {
 
             return $this->getActiveCows("No");
 

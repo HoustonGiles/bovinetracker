@@ -26,7 +26,7 @@ class Cows extends \Bovinetracker\Controller {
             exit;
         }
 
-        $this->render("index/addcow.phtml", ['cows' => $cows]);
+        $this->render("index/addcow.phtml");
     }
 
     public function editAction($options) {
