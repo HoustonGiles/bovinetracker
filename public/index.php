@@ -3,8 +3,6 @@
 //Bovine Tracker
 
 require '../vendor/autoload.php';
-print_r(get_declared_classes());
-exit();
 \Bovinetracker\Config::setDirectory('../config');
 
 $route = null;
