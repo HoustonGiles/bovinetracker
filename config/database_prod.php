@@ -1,7 +1,7 @@
 <?php
 return [
-    "dsn" => "mysql:unix_socket=/cloudsql/bovinetracker:bovinetracker;dbname=bovinetracker",
-    "username" => "root",
-    "password" => ""
+    "dsn" => "mysql:host=107.170.63.171;dbname=bovinetracker",
+    "username" => "forge",
+    "password" => "AKHwhqKaamSWDLOatK54"
 ];
 ?>
